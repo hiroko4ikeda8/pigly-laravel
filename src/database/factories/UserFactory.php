@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\WeightLog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -34,6 +36,18 @@ class UserFactory extends Factory
             return [
                 'email_verified_at' => null,
             ];
+        });
+    }
+
+    /**
+     * After creating a user, generate 35 weight log records
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            WeightLog::factory()->count(35)->create([
+                'user_id' => $user->id, // 作成したユーザーのIDをセット
+            ]);
         });
     }
 }
