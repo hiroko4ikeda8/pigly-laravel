@@ -1,0 +1,13 @@
+.auth-container {
+    width: 1512px;
+    height: 982px;
+    background-image: url('images/auth-bg.png');
+    /* 新しい画像名 */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    gap: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
