@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url('../images/auth-bg.png'); /* 背景画像を適用 */
+    background-image: url('/asset/images/background-image.jpg'); /* 背景画像を適用 */
     max-width: 1512px;
     min-height: 982px;
     position: relative;
@@ -10,7 +10,7 @@ body {
 
 .container {
     width: 580px;
-    height: 667px;
+    height: 620px;
     background-color: #ffffff;
     position: absolute;
     top: 50%;
@@ -29,6 +29,14 @@ body {
     align-items: center;
     margin-bottom: 30px;
     /* フォームとの間隔を調整 */
+}
+
+/* 画像に関するスタイル */
+.header img {
+    width: 195px;
+    height: 132px;
+    object-fit: cover; /* 画像の縦横比を保ちながら親要素にフィットさせる */
+    opacity: 1;     /* 画像の透明度を1に設定（表示されるように） */
 }
 
 h1 {
@@ -91,4 +99,11 @@ h1 {
 
 .login-link a:hover {
     text-decoration: underline;
+}
+
+/* バリデーションエラーメッセージの赤色 */
+.text-danger {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
