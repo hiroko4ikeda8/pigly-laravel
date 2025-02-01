@@ -8,47 +8,58 @@
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
 <body>
-    <div class="container">
-        <!-- h1タグを中央に配置するためのheaderクラス -->
-        <div class="header">
-            <h1>ログイン</h1>
-        </div>
-
-        <!-- フォームタグを追加 -->
-        <form action="{{ route('login') }}" method="POST">
-            @csrf <!-- CSRFトークンを追加 -->
-
-            <div class="form-group">
-                <label for="email">メールアドレス</label>
-                <input type="email" id="email" name="email" placeholder="メールアドレスを入力してください" value="{{ old('email') }}">
-                <!-- バリデーションエラーメッセージ -->
-                @error('email')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
+    <!-- コンテナ全体をラップするセクション -->
+    <section class="container">
+        <!-- ヘッダー部分 -->
+        <header class="header">
+            <div class="header">
+                <img src="{{ asset('images/pigly-ログイン.svg') }}" alt="ログイン">
             </div>
+        </header>
 
-            <div class="form-group">
-                <label for="password">パスワード</label>
-                <input type="password" id="password" name="password" placeholder="パスワードを入力してください">
-                <!-- バリデーションエラーメッセージ -->
-                @error('password')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
+        <!-- ログインフォーム部分 -->
+        <section class="login-form">
+            <form action="{{ route('login') }}" method="POST">
+                @csrf <!-- CSRFトークンを追加 -->
 
-            <div class="form-group">
-                <button type="submit">ログイン</button> <!-- type="submit" に変更 -->
-            </div>
-        </form>
+                <!-- メールアドレス入力フィールド -->
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" name="email" placeholder="メールアドレスを入力してください" value="{{ old('email') }}">
+                    <!-- バリデーションエラーメッセージ -->
+                    @error('email')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-        <div class="login-link">
-            <a href="{{ route('register_step1' }})">アカウント作成はこちら</a>
-        </div>
-    </div>
+                <!-- パスワード入力フィールド -->
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" id="password" name="password" placeholder="パスワードを入力してください">
+                    <!-- バリデーションエラーメッセージ -->
+                    @error('password')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- ログインボタン -->
+                <div class="button-section">
+                    <button type="submit" class="btn-next">ログイン</button> <!-- type="submit" に変更 -->
+                </div>
+            </form>
+        </section>
+
+        <!-- アカウント作成リンク -->
+        <section class="login-link">
+            <a href="{{ route('register.step1') }}">アカウント作成はこちら</a>
+        </section>
+
+    </section>
 </body>
 
 </html>

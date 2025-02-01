@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'current_weight', // ここを追加
+        'target_weight',  // ここを追加
     ];
 
     /**
@@ -42,9 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // ユーザーとのリレーション
+    // 体重記録とのリレーション
     public function weightLogs()
     {
         return $this->hasMany(WeightLog::class);
     }
+
+    // 目標体重とのリレーション（追加）
+    public function weightTargets()
+    {
+        return $this->hasMany(WeightTarget::class);  // UserとWeightTargetは1対多の関係
+    }
+    
 }

@@ -1,0 +1,157 @@
+/* 🌟 通常の画面サイズ用のスタイル（PC向け） */
+body {
+    font-size: 16px;
+    background-color: white;
+}
+
+.container {
+    max-width: 1120px;
+    /* PCでは最大幅を1120pxに */
+    width: 100%;
+    /* 画面サイズに合わせて可変 */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 🌟 画面幅が768px以下（タブレット向け） */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        /* フォントサイズを小さく */
+        background-color: lightgray;
+        /* 背景色を変更 */
+    }
+
+    .container {
+        width: 90%;
+        /* 画面幅に応じて可変 */
+        padding: 20px;
+    }
+}
+
+/* 🌟 画面幅が480px以下（スマートフォン向け） */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+        /* フォントサイズをさらに小さく */
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px 15px;
+        /* 左右の余白も少し広げる */
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body,
+textarea,
+input {
+    color: #8B7969;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #BEB1A6;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ヘッダー */
+.header {
+    display: grid;
+    align-items: center;
+    padding: 16px 0;
+    height: 80px;
+    border: 1px solid #E0DFDE;
+    text-align: center;
+    font-family: serif;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.header__heading {
+    font-weight: lighter;
+    font-size: 32px;
+
+    grid-column: 2;
+}
+
+.header__link {
+    margin: 0 auto;
+    width: 80px;
+    border: 1px solid #D9C6B5;
+    background-color: #F0F0F0;
+    color: #D9C6B5;
+    text-decoration: none;
+
+    grid-column: 3;
+}
+
+/* コンテンツ */
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 48px;
+}
+
+.content__heading {
+    text-align: center;
+    font-weight: 100;
+    font-size: 32px;
+    font-family: serif;
+}
+
+/* ボタン */
+.btn {
+    display: block;
+    padding: 8px 32px;
+    border: none;
+    background-color: #82756A;
+    color: #FFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.pagination li:not(.active) {
+    border: 1px solid #E0DFDE;
+    padding: 4px 12px;
+}
+
+.pagination li:not(:last-child) {
+    border-right: none;
+}
+
+.pagination a {
+    color: #8B7969;
+    text-decoration: none;
+}
+
+.pagination__link {
+    text-decoration: none;
+}
+
+.active {
+    padding: 4px 12px;
+    border: 1px solid #8B7969;
+    background-color: #8B7969;
+    color: #FFF;
+}

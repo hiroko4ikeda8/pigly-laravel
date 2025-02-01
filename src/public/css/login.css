@@ -1,17 +1,25 @@
+/* Bodyのスタイル */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url('/asset/images/background-image.jpg');
-    /* 背景画像を適用 */
-    max-width: 1512px;
-    min-height: 982px;
+    background-image: url('/images/background-image.jpg');
+    background-size: cover;
+    /* 背景画像を画面全体にフィット */
+    background-position: center center;
+    /* 背景画像を中央に配置 */
+    max-width: 100%;
+    /* 幅を画面いっぱいに */
+    min-height: 100vh;
+    /* 画面の高さを全体に */
     position: relative;
+    /* 親要素にrelativeを追加 */
     overflow: hidden;
 }
 
+/* コンテナのスタイル */
 .container {
     width: 580px;
-    height: 667px;
+    height: 560px;
     background-color: #ffffff;
     position: absolute;
     top: 50%;
@@ -23,8 +31,106 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ヘッダー部分 */
+.header {
+    text-align: center;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    /* ヘッダーとフォームの間に余白を追加 */
+}
+
+/* ログインフォーム部分 */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
 .text-danger {
     color: red;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 5px;
+}
+
+/* ボタンセクション */
+.button-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* submitボタンのカスタマイズ */
+.btn-next {
+    background: linear-gradient(90deg, #A3A6E1 0%, #FFABD9 100%);
+    /* グラデーション */
+    color: white;
+    /* 文字色 */
+    width: 250px;
+    /* 幅 */
+    height: 50px;
+    /* 高さ */
+    font-size: 16px;
+    /* フォントサイズ */
+    padding: 10px 20px;
+    /* 内側の余白 */
+    border: none;
+    /* 枠線なし */
+    border-radius: 8px;
+    /* 角丸 */
+    cursor: pointer;
+    /* マウスカーソルをポインターに */
+    transition: background 0.3s ease;
+    /* ホバー時のトランジション */
+}
+
+/* ホバー時のスタイル */
+.btn-next:hover {
+    background: linear-gradient(90deg, #FFABD9 0%, #A3A6E1 100%);
+    /* ホバー時に逆順にグラデーション */
+}
+
+/* フォーカス時（クリック後）のスタイル */
+.btn-next:focus {
+    outline: none;
+    /* フォーカス時のアウトラインを削除 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* フォーカス時に影をつける */
+}
+
+/* アカウント作成リンク */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }

@@ -29,21 +29,25 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // createUsersUsingをカスタマイズ
-        Fortify::createUsersUsing(CustomCreateNewUser::class); // 新しいユーザー作成のカスタマイズ
-
+        // Fortifyのカスタマイズ
+        Fortify::createUsersUsing(CustomCreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-        RateLimiter::for('login', function (Request $request) {
-            // $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())) . '|' . $request->ip());
+        // .env の LOGIN_RATE_LIMIT を取得（空なら無制限）
+        $limit = env('LOGIN_RATE_LIMIT', 'throttle:5,1');
 
-            // return Limit::perMinute(5)->by($throttleKey);
+        RateLimiter::for('login', function (Request $request) use ($limit) {
+            // 無制限にする場合
+            if ($limit === '') {
+                return null;
+            }
+            return Limit::perMinute(5)->by($request->ip());
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
-            // return Limit::perMinute(5)->by($request->session()->get('login.id'));
+            return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
     }
 }

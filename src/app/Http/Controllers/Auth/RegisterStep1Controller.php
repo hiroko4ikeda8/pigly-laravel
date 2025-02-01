@@ -27,6 +27,6 @@ class RegisterStep1Controller extends Controller
         ]);
 
         // 登録後、ステップ2に遷移
-        return redirect()->route('auth.register_step');
+        return redirect()->route('auth.register_step2');
     }
 }

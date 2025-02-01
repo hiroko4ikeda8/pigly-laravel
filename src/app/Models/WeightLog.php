@@ -14,6 +14,12 @@ class WeightLog extends Model
     // ユーザーとのリレーション
     public function user()
     {
+        $weightLog = WeightLog::where('user_id', auth()->id())->latest()->first();
+        $weightLog->update([
+            'weight' => $data['current_weight'],
+            'target_weight' => $data['target_weight'],
+        ]);
+
         return $this->belongsTo(User::class);
     }
 }
